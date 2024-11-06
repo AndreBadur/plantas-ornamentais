@@ -38,3 +38,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+
+## Teste de Commit
+
+Utilizando Node.js e React como base para o desenvolvimento back-end e front-end, esta aplicação de e-commerce foi projetada para a venda de plantas ornamentais e desenvolvida como parte do curso de Laboratório de Banco de Dados e Engenharia de Software III na Faculdade Tecnológica de Campinas (Fatec Campinas). Além disso, utilizamos Next.js para potencializar a renderização no lado do servidor (SSR) e otimizar o SEO, o que proporcionaria uma experiência de navegação mais rápida e melhor indexação nos motores de busca.
+
+A plataforma oferece funcionalidades como cadastro de usuários, gerenciamento de produtos, carrinho de compras e processamento de pedidos, tudo projetado para facilitar a navegação e a compra. Além disso, implementamos práticas de segurança para proteger os dados dos usuários e garantir uma transação segura.
+
+Esta documentação tem como objetivo fornecer uma visão geral da aplicação, detalhar suas funcionalidades, e apresentar as tecnologias utilizadas, bem como as etapas de instalação e uso. Esperamos que este projeto inspire outros estudantes e desenvolvedores a explorar o potencial do comércio eletrônico e a beleza das plantas ornamentais.
