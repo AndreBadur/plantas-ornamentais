@@ -2,7 +2,7 @@ import React from "react";
 
 interface FraseTipo {
     text: string; 
-  }
+}
 
 export const Titulo: React.FC<FraseTipo> = ({text}) => {
     return(

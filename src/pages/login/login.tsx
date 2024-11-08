@@ -19,7 +19,7 @@ export default function Login(){
                     <CamposLogin></CamposLogin>
                     <Opcao text="esqueceu a senha?"></Opcao>
                     <div className={`w-[100%]`}>
-                        <Botao></Botao>
+                        <Botao text="Login"></Botao>
                     </div>
                     
 
