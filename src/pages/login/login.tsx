@@ -1,21 +1,34 @@
-import Botao from "@/components/BotaoConfirma";
-import CamposLogin from "@/components/CamposLogin";
+import Button from "@/components/BotaoConfirma";
+import {InputEmail, InputPassword} from "@/components/CamposLogin";
+import {Title, SubTitle, Option} from "@/components/TextoAuth";
 import Image from "next/image";
 
 
+
 export default function Login(){
-    var x = 10 + 5
     return(
-        <div className={`flex justify-between w-screen`}>
+        <div className={`flex justify-between w-[100%]`}>
             
-            <div className={`border border-black flex flex-col justify-center items-center h-screen w-[50%]`}>
-                <h1>Esse é um login</h1>
-                <CamposLogin></CamposLogin>
-                <Botao></Botao>
-                Agora eu vou digitar esse texto e ele esta em html
-                {x}
-            </div>
-            <div className={`relative w-[50%]`}>
+            <section className={`flex justify-center items-center h-screen w-[100%]`}>
+                <div>
+                    <div className={`h-20vh flex flex-col`}>
+                        <Title text="Bem-vindo de volta!"></Title>
+                        <SubTitle text="Insira seus dados para acessar sua conta!"></SubTitle>
+                    </div>
+
+                    <InputEmail></InputEmail>
+                    <InputPassword></InputPassword>
+                    <Option text="esqueceu a senha?"></Option>
+
+                    <div className={`w-[100%] flex justify-center`}>
+                        <Button text="Login"></Button>
+                    </div>
+                    
+
+                </div>
+            </section>
+
+            <div className={`relative w-[100%]`}>
                 <Image
                     src="/imagens/loginbg.jpg"
                     alt="Imagem"
