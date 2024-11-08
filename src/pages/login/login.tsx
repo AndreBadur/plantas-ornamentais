@@ -1,6 +1,6 @@
-import Botao from "@/components/BotaoConfirma";
-import CamposLogin from "@/components/CamposLogin";
-import {Titulo, SubTitulo, Opcao} from "@/components/TextoAuth";
+import Button from "@/components/BotaoConfirma";
+import {InputEmail, InputPassword} from "@/components/CamposLogin";
+import {Title, SubTitle, Option} from "@/components/TextoAuth";
 import Image from "next/image";
 
 
@@ -10,16 +10,18 @@ export default function Login(){
         <div className={`flex justify-between w-[100%]`}>
             
             <section className={`flex justify-center items-center h-screen w-[100%]`}>
-                <div className={`w-[35vw] h-[40vh]`}>
+                <div>
                     <div className={`h-20vh flex flex-col`}>
-                        <Titulo text="Bem-vindo de volta!"></Titulo>
-                        <SubTitulo text="Insira seus dados para acessar sua conta!"></SubTitulo>
+                        <Title text="Bem-vindo de volta!"></Title>
+                        <SubTitle text="Insira seus dados para acessar sua conta!"></SubTitle>
                     </div>
 
-                    <CamposLogin></CamposLogin>
-                    <Opcao text="esqueceu a senha?"></Opcao>
-                    <div className={`w-[100%]`}>
-                        <Botao text="Login"></Botao>
+                    <InputEmail></InputEmail>
+                    <InputPassword></InputPassword>
+                    <Option text="esqueceu a senha?"></Option>
+
+                    <div className={`w-[100%] flex justify-center`}>
+                        <Button text="Login"></Button>
                     </div>
                     
 

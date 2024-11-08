@@ -4,19 +4,19 @@ interface FraseTipo {
     text: string; 
 }
 
-export const Titulo: React.FC<FraseTipo> = ({text}) => {
+export const Title: React.FC<FraseTipo> = ({text}) => {
     return(
-        <h1 className="font-bebasNeue text-[3.7rem]">{text}</h1>
+        <h1 className="font-bebasNeue text-[3.7rem] h-[4rem]">{text}</h1>
     )
 }
 
-export const SubTitulo: React.FC<FraseTipo> = ({text}) => {
+export const SubTitle: React.FC<FraseTipo> = ({text}) => {
     return(
-        <p className="font-bebasNeue text-[1.25rem]">{text}</p>
+        <p className="font-bebasNeue text-[1.25rem] mb-[2rem]">{text}</p>
     )
 }
 
-export const Opcao: React.FC<FraseTipo> = ({text}) => {
+export const Option: React.FC<FraseTipo> = ({text}) => {
     return(
         <p className="text-[0.938rem] text-[#7B9A41]">{text}</p>
     )
