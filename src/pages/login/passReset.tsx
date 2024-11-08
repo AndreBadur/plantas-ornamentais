@@ -1,35 +1,34 @@
 import Button from "@/components/BotaoConfirma";
-import {InputEmail, InputPassword} from "@/components/CamposLogin";
+import {InputEmail, InputPassword, InputConfirmPassword,InputName} from "@/components/CamposLogin";
 import {Title, SubTitle, Option, Line} from "@/components/TextoAuth";
 import Image from "next/image";
 
 
 
-export default function Login(){
+export default function SignUp(){
     return(
         <div className={`flex justify-between w-[100%]`}>
             
             <section className={`flex justify-center items-center h-screen w-[100%]`}>
                 <div>
-                    <div className={`h-20vh flex flex-col`}>
-                        <Title text="Bem-vindo de volta!"></Title>
-                        <SubTitle text="Insira seus dados para acessar sua conta!"></SubTitle>
+                    <div className={`h-20vh flex flex-col leading-[1.4rem]`}>
+                        <Title text="Recuperar conta"></Title>
+                        <div className={`w-[22rem] mt-[-1.75rem]`}>
+                            <SubTitle text="Enviaremos um email de recuperação de senha no email informado"></SubTitle>
+                        </div>
                     </div>
 
-                    <div className="h-[24vh] flex flex-col justify-around">
+                    <div className="h-[14vh] flex flex-col justify-around">
                         <InputEmail></InputEmail>
-                        <InputPassword></InputPassword>
                     </div>
-                    
-                    <a href="passReset"><Option text="esqueceu a senha?"></Option></a>
 
                     <div className={`w-[100%] flex justify-center mt-[1.3rem]`}>
-                        <Button text="Login"></Button>
+                        <Button text="Enviar"></Button>
                     </div>
 
                     <Line></Line>
                     <div className={`flex justify-center text-[0.938rem] mt-[0.4rem]`}>
-                        <p>Não possui uma conta? <a href="signUp" className="text-[#7B9A41]">Cadastre-se</a></p>
+                        <p>Possui uma conta? Faça <a href="login" className="text-[#7B9A41]">login</a></p>
                     </div>
                 </div>
             </section>
