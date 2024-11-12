@@ -14,7 +14,6 @@ export default function Bola(props:bolaProps){
             <Image className=""
                 src={props.caminho}
                 alt="Imagem"
-                layout="responsive"
                 width={180}
                 height={180}              
             />
