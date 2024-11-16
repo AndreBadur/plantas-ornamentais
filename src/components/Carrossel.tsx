@@ -25,7 +25,7 @@ const Carrossel: React.FC = () => {
 
   // Adiciona a rotação automática do carrossel
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Mudar a cada 5 segundos
+    const interval = setInterval(nextSlide, 10000); // Mudar a cada 10 segundos
 
     // Limpar o intervalo quando o componente for desmontado
     return () => clearInterval(interval);
@@ -46,11 +46,13 @@ const Carrossel: React.FC = () => {
             key={index}
             className="w-full sm:w-1/3 flex-shrink-0 flex justify-center items-center" // Ajusta para 3 imagens visíveis
           >
-            <img
-              src={image}
-              alt={`Slide ${index}`}
-              className="w-56 h-56 object-contain" // Ajusta a imagem para não esticar
-            />
+            <a href="">
+              <img
+                src={image}
+                alt={`Slide ${index}`}
+                className="w-56 h-56 object-contain" // Ajusta a imagem para não esticar
+              />
+            </a>
           </div>
         ))}
       </div>

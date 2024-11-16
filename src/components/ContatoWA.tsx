@@ -2,7 +2,8 @@ import Image from "next/image"
 
 export default function ContatoWA(){
     return (
-        <div className={`fixed bottom-0 bg-green-600 flex w-1/4 h-16 rounded-t-3xl`}>
+        <a href="">
+            <div className={`fixed bottom-0 bg-green-600 flex w-1/5 h-16 rounded-t-3xl`}>
             <div className="mb-3 ml-5 mt-3">
                 <Image 
                     src= "/imagens/whatsapp.png"
@@ -15,5 +16,7 @@ export default function ContatoWA(){
                 <h1>WhatsApp</h1>
             </div>
         </div>
+        </a>
+        
     )
 }
