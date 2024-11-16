@@ -1,12 +1,12 @@
-import Bola from "../Bola";
+import Quadrado from "../Quadrado";
 
 export default function Categorias(){
     return(
         <div>
             <div className="flex justify-around items-center h-auto w-screen">
-                <Bola nome="Categoria 1" caminho="/imagens/tulipa.png"></Bola>
-                <Bola nome="Categoria 2" caminho="/imagens/flor.png"></Bola>
-                <Bola nome="Categoria 2" caminho="/imagens/reptil.png"></Bola>
+                <Quadrado nome="Plantas de interior" caminho="/imagens/p-interior.png"></Quadrado>
+                <Quadrado nome="Paisagismo" caminho="/imagens/paisagismo.png"></Quadrado>
+                <Quadrado nome="Folhagens" caminho="/imagens/folhagens.png"></Quadrado>
             </div>
         </div>
     )
