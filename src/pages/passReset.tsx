@@ -1,4 +1,4 @@
-import Button from "@/components/BotaoConfirma";
+import {Button} from "@/components/BotaoConfirma";
 import {InputEmail, InputPassword, InputConfirmPassword,InputName} from "@/components/CamposLogin";
 import {Title, SubTitle, Option, Line} from "@/components/TextoAuth";
 import Image from "next/image";
@@ -17,15 +17,16 @@ export default function SignUp(){
                             <SubTitle text="Enviaremos um email de recuperação de senha no email informado"></SubTitle>
                         </div>
                     </div>
+                    <form action="" method="">
+                        <div className="h-[14vh] flex flex-col justify-around">
+                            <InputEmail></InputEmail>
+                        </div>
 
-                    <div className="h-[14vh] flex flex-col justify-around">
-                        <InputEmail></InputEmail>
-                    </div>
-
-                    <div className={`w-[100%] flex justify-center mt-[1.3rem]`}>
-                        <Button text="Enviar"></Button>
-                    </div>
-
+                        <div className={`w-[100%] flex justify-center mt-[1.3rem]`}>
+                            <Button text="Enviar"></Button>
+                        </div>
+                    </form>
+                    
                     <Line></Line>
                     <div className={`flex justify-center text-[0.938rem] mt-[0.4rem]`}>
                         <p>Possui uma conta? Faça <a href="login" className="text-[#7B9A41]">login</a></p>
