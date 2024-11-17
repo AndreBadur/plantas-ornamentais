@@ -31,28 +31,28 @@ export function PersonalDataForms({ nome, telefone, email, cep, cidade, bairro, 
             <form onSubmit={handleSubmit} className='text-[20px]'>
                 <label>Identificação</label>
                 <div className='flex justify-between mt-[0.2rem]'>
-                    <input type="text" value={inputValue.nome} onChange={handleChange} className='w-[48%] border-b border-black'/> 
-                    <input type="text" value={inputValue.telefone} onChange={handleChange} className='w-[48%] border-b border-black'/>
+                    <input type="text" name="nome" value={inputValue.nome} onChange={handleChange} className='w-[48%] border-b border-black'/> 
+                    <input type="text" name="telefone" value={inputValue.telefone} onChange={handleChange} className='w-[48%] border-b border-black'/>
                 </div>
 
                 <div className='mt-[1.8rem] mb-[2.5rem]'>
-                    <input type="email" value={inputValue.email} onChange={handleChange} className='w-[100%] border-b border-black'/>
+                    <input type="email" name="email" value={inputValue.email} onChange={handleChange} className='w-[100%] border-b border-black'/>
                 </div>
 
                 <label>Endereço</label>
                 <div className='flex justify-between mt-[0.2rem]'>
-                    <input type="text" value={inputValue.cep} onChange={handleChange} className='w-[30%] border-b border-black'/>
-                    <input type="text" value={inputValue.cidade} onChange={handleChange} className='w-[66%] border-b border-black'/>
+                    <input type="text" name='cep' value={inputValue.cep} onChange={handleChange} className='w-[30%] border-b border-black'/>
+                    <input type="text" name='cidade' value={inputValue.cidade} onChange={handleChange} className='w-[66%] border-b border-black'/>
                 </div>
                 
                 <div className='flex justify-between mt-[1.8rem]'>
-                    <input type="text" value={inputValue.bairro} onChange={handleChange} className='w-[40%] border-b border-black'/>
-                    <input type="text" value={inputValue.rua} onChange={handleChange} className='w-[56%] border-b border-black'/>
+                    <input type="text" name='bairro' value={inputValue.bairro} onChange={handleChange} className='w-[40%] border-b border-black'/>
+                    <input type="text" name='rua' value={inputValue.rua} onChange={handleChange} className='w-[56%] border-b border-black'/>
                 </div>
                 
                 <div className='flex justify-between mt-[1.8rem]'>
-                    <input type="text" value={inputValue.complemento} onChange={handleChange} className='w-[66%] border-b border-black'/>
-                    <input type="text" value={inputValue.numero} onChange={handleChange} className='w-[30%] border-b border-black'/>
+                    <input type="text" name='complemento' value={inputValue.complemento} onChange={handleChange} className='w-[66%] border-b border-black'/>
+                    <input type="text" name='numero' value={inputValue.numero} onChange={handleChange} className='w-[30%] border-b border-black'/>
                 </div>
                 
                 <div className='mt-[3rem]'>
