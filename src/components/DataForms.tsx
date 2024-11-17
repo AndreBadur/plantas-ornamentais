@@ -12,7 +12,7 @@ export function PersonalDataForms({ nome, telefone, email, cep, cidade, bairro, 
     // Função para lidar com a mudança nos inputs (Indicação IA)
     const handleChange = (event) => {
         const { name, value } = event.target;
-        setFormData((prevState) => ({
+        setInputValue((prevState) => ({
             ...prevState,
             [name]: value
         }));
@@ -55,8 +55,8 @@ export function PersonalDataForms({ nome, telefone, email, cep, cidade, bairro, 
                     <input type="text" value={inputValue.numero} onChange={handleChange} className='w-[30%] border-b border-black'/>
                 </div>
                 
-                <div>
-                    <button type="submit">Salvar</button>
+                <div className='mt-[3rem]'>
+                    <button type="submit" className='bg-[#00f511] w-[10rem] h-[3rem] rounded-lg text-[24px] text-white'>Salvar</button>
                 </div>
                 
             </form>

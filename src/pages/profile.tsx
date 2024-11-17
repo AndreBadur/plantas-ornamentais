@@ -10,7 +10,7 @@ export default function Profile(){
             <section className="flex">
                 <ProfileSide></ProfileSide>
                 <PersonalDataForms 
-                    nome= "[nome]" 
+                    nome= "[nome]"
                     telefone="[telefone]" 
                     email="[email]" 
                     cep="[cep]" 
