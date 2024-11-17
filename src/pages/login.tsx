@@ -15,7 +15,7 @@ export default function Login(){
                         <Title text="Bem-vindo de volta!"></Title>
                         <SubTitle text="Insira seus dados para acessar sua conta!"></SubTitle>
                     </div>
-
+                    
                     <div className="h-[24vh] flex flex-col justify-around">
                         <InputEmail></InputEmail>
                         <InputPassword></InputPassword>
