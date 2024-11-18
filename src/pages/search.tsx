@@ -4,7 +4,7 @@ import ContatoWA from "@/components/ContatoWA";
 import Filtro from "@/components/Filtro"; 
 import Anuncio from "@/components/Anuncio";
 
-const Product: React.FC = () => {
+const Search: React.FC = () => {
     useEffect(() => {
         // Remover o scroll horizontal
         document.body.style.overflowX = 'hidden';
@@ -40,4 +40,4 @@ const Product: React.FC = () => {
     );
 };
 
-export default Product;
+export default Search;
