@@ -1,5 +1,5 @@
 /*
-Penei em deixar os input já com seus valores do banco de dados, assim seria mais fácil de visualizar. No entanto, só soube
+Pensei em deixar os input já com seus valores do banco de dados, assim seria mais fácil de visualizar. No entanto, só soube
 fazer de 'cabeça' a parte visual, preciso dar uma olhada na documentação do react/node sobre isso. As constantes referentes
 a conexão com banco de dados (handleChange e handlesubmit) foram indicações da IA de como poderia ser feito.
 */
@@ -26,7 +26,7 @@ export function PersonalDataForms({ nome, telefone, email, cep, cidade, bairro, 
 
     //Seria interessante o uso de macro nos inputs por conta da legibilidade?
     return (
-        <div className='w-[58%] font-bebasNeue ml-[4.5rem] mt-[3.4rem]'>
+        <div className='w-[50%] font-bebasNeue ml-[5rem] mt-[3.4rem]'>
             <h2 className='text-[38px] mb-[2rem]'>Informações Pessoais</h2>
             <form onSubmit={handleSubmit} className='text-[20px]'>
                 <label>Identificação</label>
