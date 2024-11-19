@@ -16,6 +16,22 @@ const config: Config = {
       fontFamily: {
         bebasNeue: ['Bebas Neue'],
       },
+
+      animation: {
+        'slide-in-right': 'slideInRight 0.2s ease-out forwards',
+      },
+      keyframes: {
+        slideInRight: {
+          '0%': {
+            transform: 'translateX(120%)',
+            opacity: 0,
+          },
+          '100%': {
+            transform: 'translateX(0)',
+            opacity: 1,
+          },
+        },
+      },
     },
   },
   plugins: [],
