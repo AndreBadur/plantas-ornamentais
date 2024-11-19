@@ -12,7 +12,7 @@ export default function ContatoWA(){
                     height={40}              
                 />
             </div>
-            <div className="font-bold mb-5 ml-6 mt-5">
+            <div className="font-bold mb-5 ml-8 mt-5">
                 <h1>WhatsApp</h1>
             </div>
         </div>
