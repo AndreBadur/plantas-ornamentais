@@ -1,15 +1,45 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Menu from "@/components/Menu";
 import Carrossel from "@/components/Carrossel"; // Importando o componente carrossel
 import Categorias from "@/components/macrocomponent/Categorias";
 import ContatoWA from "@/components/ContatoWA"; 
 import Anuncio from "@/components/Anuncio";
 
+interface Products{
+    id: number;
+    title: string;
+    price: number;
+    description: string;
+    cost: number;
+    
+}
+
+
 const Home: React.FC = () => {
+    const [products, setProducts] = useState<Products[]>([]);
+
     useEffect(() => {
         // Remover o scroll horizontal
         document.body.style.overflowX = 'hidden';
+
+        // Buscar Produtos no BD
+        fetchProducts();
     }, []);
+
+    // Função de Busca que obtem o retorno da API
+    const fetchProducts = async () =>{
+        try {
+            const response = await fetch('/api/products')
+    
+            if(!response.ok) throw new Error('Failed to fetch: look at index.tsx');
+            const data = await response.json();
+            setProducts(data);    
+        } catch (error) {
+            console.error('Error fetching products:', error)
+        }
+        
+    }
+
 
     return (
         <div className="flex flex-col bg-white min-h-screen">
@@ -31,9 +61,11 @@ const Home: React.FC = () => {
             </div>
             {/* Ajuste de espaço entre os anúncios com flex-wrap */}
             <div className="flex flex-wrap justify-center gap-6 w-full mt-6 mb-32 space-x-36">
-                <Anuncio />
-                <Anuncio />
-                <Anuncio />
+                {products.map((product) => (
+                    <li key={product.id}>
+                        <Anuncio  title={product.title} description={product.description} price={product.price} image='/imagens/vaso.png'> </Anuncio>
+                    </li>
+                ))}
             </div>
             <ContatoWA />
         </div>
