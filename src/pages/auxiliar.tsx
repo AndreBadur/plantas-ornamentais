@@ -1,4 +1,4 @@
-import Popup from '@/components/PopUp';
+import Popup from '@/components/macrocomponent/PopUp';
 import Menu from '@/components/Menu';
 import React, { useState } from 'react';
 
