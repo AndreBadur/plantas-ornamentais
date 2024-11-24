@@ -25,7 +25,7 @@ const Popup = ({ isOpen, closePopup }) => {
                       <Card nome="Planta Z" descricao="Aqui jaz mais uma descrição" valor="100,00" quantidade="1" />
                       <Card nome="Planta A" descricao="Aqui jaz uma bela descrição" valor="78,45" quantidade="3" />
                       <Card nome="Planta B" descricao="Aqui jaz uma bela descrição" valor="78,45" quantidade="3" />
-                      {/* Adicione mais Cards para testar o scroll */}
+                      
                     </div>
                   </div>  
                 </div>
