@@ -34,16 +34,14 @@ export default function SignUp(){
                 </div>
             </section>
 
-            <div className={`relative w-[100%]`}>
-                <Image
-                    src="/imagens/loginbg2.png"
-                    alt="Imagem"
-                    layout="fill" 
-                    objectFit="cover"               
-                />
-                 
-            </div>
-        </div>
-        
-    )
+      <div className={`relative w-[100%]`}>
+        <Image
+          src="/imagens/loginbg2.png"
+          alt="Imagem"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+    </div>
+  );
 }

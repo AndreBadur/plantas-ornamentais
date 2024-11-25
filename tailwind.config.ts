@@ -14,7 +14,7 @@ const config: Config = {
       },
 
       fontFamily: {
-        bebasNeue: ['Bebas Neue'],
+        bebasNeue: ["Bebas Neue"],
       },
 
       animation: {

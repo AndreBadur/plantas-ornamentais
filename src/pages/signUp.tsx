@@ -28,23 +28,26 @@ export default function SignUp(){
                         </div>
                     </form>  
 
-                    <Line></Line>
-                    <div className={`flex justify-center text-[0.938rem] mt-[0.4rem]`}>
-                        <p>Possui uma conta? Faça <a href="login" className="text-[#7B9A41]">login</a></p>
-                    </div>
-                </div>
-            </section>
-
-            <div className={`relative w-[100%]`}>
-                <Image
-                    src="/imagens/loginbg2.png"
-                    alt="Imagem"
-                    layout="fill" 
-                    objectFit="cover"               
-                />
-                 
-            </div>
+          <Line></Line>
+          <div className={`flex justify-center text-[0.938rem] mt-[0.4rem]`}>
+            <p>
+              Possui uma conta? Faça{" "}
+              <a href="login" className="text-[#7B9A41]">
+                login
+              </a>
+            </p>
+          </div>
         </div>
-        
-    )
+      </section>
+
+      <div className={`relative w-[100%]`}>
+        <Image
+          src="/imagens/loginbg2.png"
+          alt="Imagem"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+    </div>
+  );
 }
