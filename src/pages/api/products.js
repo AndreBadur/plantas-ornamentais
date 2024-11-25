@@ -13,7 +13,7 @@ export default async function Products(req, res) {
         .json({ message: "Failed to fetch Products: look api/product.js" });
     }
   } else if (req.method === "POST") {
-    const { title, description, price, cost } = req.body;
+    const { title, description, price, cost, mean_rating, image_1, image_2, image_3, image_4, image_5 } = req.body;
 
     if (!title || !price) {
       return res
@@ -23,7 +23,7 @@ export default async function Products(req, res) {
 
     try {
       const newProduct = await prisma.product.create({
-        data: { title, description, price, cost },
+        data: { title, description, price, cost, mean_rating, image_1, image_2, image_3, image_4, image_5 },
       });
       res.status(201).json(newProduct);
     } catch (error) {
@@ -46,14 +46,35 @@ export default async function Products(req, res) {
         },
       });
       res.status(201).json(deleteProduct);
-      res.status(201).json(id);
+      
     } catch (error) {
       res
         .status(500)
         .json(id)
         .json({ message: "Failed to delete Product: look api/product.js" });
     }
-  } else {
+  } else if(req.method === "PUT"){
+    const id = req.query.receivedId;
+
+    if (!id) {
+      return res
+        .status(400)
+        .json({ message: "Invalid Data: Product ID is missing" });
+    }
+    try {
+      const findUniqueProduct = await prisma.product.findUnique({
+        where: {
+          id: Number(id),
+        },
+      });
+      res.status(201).json(findUniqueProduct);
+    } catch (error) {
+      res
+        .status(500)
+        .json(id)
+        .json({ message: "Failed to delete Product: look api/product.js" });
+    }
+  }else {
     res.status(405).json({ message: "Method not allowed" });
   }
   //, cost, mean_rating, image1, image2,image3,image4,image5

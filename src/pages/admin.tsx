@@ -39,13 +39,13 @@ const Admin: React.FC = () => {
             <Menu/>
             <MenuAdmin onSelect={(value) => setSelectedComponent(value)}/>
             <div className="ml-60 mt-14 bg-white">{renderComponent()}</div>
-        </>
-        /* PARA TESTAR CRIAR E EDITAR PRODUTOS
-        <>
+        </> 
+     
+        /* <>
             <Menu/>
             <MenuAdmin onSelect={(value) => setSelectedComponent(value)}/>
             <CriarProduto/>
-        </>*/
+        </> */
     );
 };
 
