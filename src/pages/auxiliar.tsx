@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 
 const App = () => {
+  // Precisamos declarar essas variáveis para armazenar o boolean de aberto ou fechado
   const [isOpen, setIsOpen] = useState(false);
   const openPopup = () => setIsOpen(true);
   const closePopup = () => setIsOpen(false);
