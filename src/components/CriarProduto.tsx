@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { FormEvent, useState } from "react";
 interface Products {
     id: number;
@@ -44,6 +46,7 @@ const EditarProduto: React.FC = () => {
             setImage_4(null);
             setImage_5(null);
             setError("");
+            redirect("admin");
           } else {
             throw new Error("Failed to add product");
           }
@@ -72,7 +75,7 @@ const EditarProduto: React.FC = () => {
 
         
 
-        <div className="ml-60 mt-14 bg-white flex-col min-h-screen"> {/* items-center justify-center */}
+        <div className="ml-10 mt-14 bg-white flex-col min-h-screen"> {/* items-center justify-center */}
             <div className="flex">
             <h1 className="ml-6 mt-4 text-black font-bold text-3xl">Criar produto</h1>
             </div>
@@ -159,12 +162,17 @@ const EditarProduto: React.FC = () => {
             />
             </div>
 
-            <div className="mt-5 w-full flex justify-end">
-               <button className="mr-20 w-72 h-11 rounded-md text-white font-black bg-green-400 hover:bg-green-700" onClick={handleSubmit}>
-                Create Product
+            <div className="mt-10 w-full flex justify-end">
+              <Link href="admin">
+              <button className="mr-5 w-40 h-11 rounded-md text-white font-black bg-red-600 hover:bg-red-700">
+                Cancelar
+               </button>
+              </Link>
+              
+               <button className="mr-20 w-72 h-11 rounded-md text-white font-black bg-green-600 hover:bg-green-700" onClick={handleSubmit}>
+                Criar Produto
                </button>
             </div>
-            
         </div>
     );
 };
