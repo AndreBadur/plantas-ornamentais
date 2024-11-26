@@ -1,3 +1,4 @@
+import Anuncio from "@/components/Anuncio";
 import { useEffect, useState } from "react";
 
 interface Products {
@@ -16,7 +17,6 @@ export default function updateProduct(){
     const [price, setPrice] = useState<number>(0);
     const [description, setDescription] = useState<string>("");
     const [cost, setCost] = useState<number>(0);
-    
     
 
     useEffect(() => {
@@ -58,3 +58,4 @@ export default function updateProduct(){
         </div>
     )
 }
+
