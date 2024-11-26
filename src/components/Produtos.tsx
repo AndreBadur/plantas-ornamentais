@@ -83,11 +83,13 @@ const Produtos: React.FC = () => {
         <div className="p-6 min-h-screen">
             <h1 className="ml-6 mt-4 mb-10 text-black font-bold text-3xl">Produtos</h1>
            <Link href={''}>
+           <a href="/createProduct">
            <button
                 className="bg-green-500 text-white px-4 py-2 rounded-md mb-4"
             >
                 Adicionar Produto
             </button>
+           </a>
            </Link> 
             <table className="text-black min-w-full table-auto">
                 <thead>
@@ -126,11 +128,13 @@ const Produtos: React.FC = () => {
                                 >
                                     <img src="/imagens/lixeira.png" alt="Excluir" className="w-5 h-5" />
                                 </button>
+                                <a href="/updateProduct">
                                 <button
                                     className="flex items-center justify-center bg-blue-500 p-2 rounded-md"
                                 >
                                     <img src="/imagens/lapis.png" alt="Editar" className="w-5 h-5" />
                                 </button>
+                                </a>
                             </td>
                         </tr>
                     ))}

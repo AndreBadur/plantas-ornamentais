@@ -5,9 +5,9 @@ import Dashboard from "@/components/Dashboard";
 import Produtos from "@/components/Produtos";
 import Categorias from "@/components/Categorias";
 import Tags from "@/components/Tags";
-import EditarProduto from "@/components/EditarProduto";
+import CriarProduto from "@/components/CriarProduto";
 
-const updateProduct: React.FC = () => {
+const createProduct: React.FC = () => {
     const [selectedComponent, setSelectedComponent] = useState<string>("dashboard");
 
     useEffect(() => {
@@ -35,9 +35,9 @@ const updateProduct: React.FC = () => {
         <>
             <Menu/>
             <MenuAdmin onSelect={(value) => setSelectedComponent(value)}/>
-            <EditarProduto/>
+            <CriarProduto/>
         </> 
     );
 };
 
-export default updateProduct;
+export default createProduct;

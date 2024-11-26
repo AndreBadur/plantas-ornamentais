@@ -40,12 +40,6 @@ const Admin: React.FC = () => {
             <MenuAdmin onSelect={(value) => setSelectedComponent(value)}/>
             <div className="ml-60 mt-14 bg-white">{renderComponent()}</div>
         </> 
-     
-        /* <>
-            <Menu/>
-            <MenuAdmin onSelect={(value) => setSelectedComponent(value)}/>
-            <CriarProduto/>
-        </> */
     );
 };
 
