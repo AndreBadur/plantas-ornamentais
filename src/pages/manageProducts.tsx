@@ -1,5 +1,6 @@
 import Button from "@/components/BotaoConfirma";
 import { SubTitle } from "@/components/TextoAuth";
+import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import { SlPencil, SlTrash } from "react-icons/sl";
 
@@ -17,11 +18,9 @@ export default function manageProducts() {
   const [products, setProducts] = useState<Products[]>([]);
   const [error, setError] = useState<string>("");
   const [id, setId] = useState<number>(0);
-  const formEvent = async (e: FormEvent)=>{
-    e.preventDefault
-  }
-  
-  
+  const formEvent = async (e: FormEvent) => {
+    e.preventDefault;
+  };
 
   useEffect(() => {
     // Remover o scroll horizontal
@@ -44,16 +43,15 @@ export default function manageProducts() {
     }
   };
 
-  async function deleteProduct (receivedId: number){
-
+  async function deleteProduct(receivedId: number) {
     /* INFORMATION: 
     Something really important in this function,
     it's the fact the Method: DELETE do not allow body: content as POST and GET 
     */
 
-    formEvent
+    formEvent;
     try {
-      const response = await fetch('/api/products?receivedId='+receivedId, {
+      const response = await fetch("/api/products?receivedId=" + receivedId, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -61,7 +59,7 @@ export default function manageProducts() {
       });
       if (response.ok) {
         const deletedProduct = await response.json();
-        console.log(deletedProduct)
+        console.log(deletedProduct);
         fetchProducts();
         setError("");
       } else {
@@ -71,21 +69,38 @@ export default function manageProducts() {
       console.error("Error deleting product - catch:", error);
       setError("failed to delete product");
     }
-  };
- 
+  }
 
+  async function updateProduct(receivedId: number){
+    
+  }
+ 
   return (
     <div className="flex items-center ">
       <table className="table-auto border-separate border border-slate-400 w-full">
         <thead>
           <tr className="border border-b-[1px] bg-black text-white w-auto ">
-            <th className="border border-slate-300"><SubTitle text="ID"></SubTitle></th>
-            <th className="border-x"><SubTitle text="TITLE"></SubTitle></th>
-            <th className="border-x"><SubTitle text="DESCRIPTION"></SubTitle></th>
-            <th className="border-x"><SubTitle text="PRICE"></SubTitle></th>
-            <th className="border-x"><SubTitle text="COST"></SubTitle></th>
-            <th className="border-x"><SubTitle text="STATUS"></SubTitle></th>
-            <th className="col-span-2 bg-green-600 font-white font-black rounded-sm"><button onClick={()=>createProduct()}>Create Product</button></th>
+            <th className="border border-slate-300">
+              <SubTitle text="ID"></SubTitle>
+            </th>
+            <th className="border-x">
+              <SubTitle text="TITLE"></SubTitle>
+            </th>
+            <th className="border-x">
+              <SubTitle text="DESCRIPTION"></SubTitle>
+            </th>
+            <th className="border-x">
+              <SubTitle text="PRICE"></SubTitle>
+            </th>
+            <th className="border-x">
+              <SubTitle text="COST"></SubTitle>
+            </th>
+            <th className="border-x">
+              <SubTitle text="STATUS"></SubTitle>
+            </th>
+            <th className="col-span-2 bg-green-600 font-white font-black rounded-sm">
+              <button onClick={() => createProduct()}>Create Product</button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -100,8 +115,14 @@ export default function manageProducts() {
               <th className="border border-slate-300">{product.price}</th>
               <th className="border border-slate-300">{product.cost}</th>
               <th className="border border-slate-300">{product.status}</th>
-              <th className="col-span-1"><button onClick={() => deleteProduct(product.id)}><SlTrash/></button></th>
-              <th><button onClick={() => updateProduct(product.id)}><SlPencil/></button></th>
+              <th className="col-span-1">
+                <button onClick={() => deleteProduct(product.id)}>
+                  <SlTrash />
+                </button>
+              </th>
+              <th>
+                <Link href={`updateProduct?id=${product.id}`} onClick={()=>console.log('escrito')}> <SlPencil /></Link>                 
+              </th>
             </tr>
           ))}
         </tbody>

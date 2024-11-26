@@ -19,7 +19,7 @@ const Popup = ({ isOpen, closePopup }) => {
 
                       {/* Acredito que possamos utilizar o componente Card com seus props para passar os dados do banco
                       e estrutura de busca / repetição para mostrar todos os produtos que estão no carrinho.*/}
-                    <div className="flex-1  px-4 space-y-4">
+                    <div className="flex-1  px-4 space-y-4 pb-[5rem]">
                       <Card nome="Planta X" descricao="Aqui jaz uma bela descrição" valor="78,45" quantidade="3" />
                       <Card nome="Planta Y" descricao="Aqui jaz outra descrição" valor="50,00" quantidade="2" />
                       <Card nome="Planta Z" descricao="Aqui jaz mais uma descrição" valor="100,00" quantidade="1" />

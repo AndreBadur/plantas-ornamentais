@@ -7,10 +7,16 @@ export default function Card({nome, descricao, valor, quantidade}){
                 </div>
 
                 <div className="w-[0.2px] h-[84%] bg-black"></div>
+
                 <div className="h-[11rem] pl-[4%] pt-[2%]">
                     <div> 
-                        <p className="font-bebasNeue text-[1.7rem]">{nome}</p>
-                        <p className="font-bebasNeue text-[0.95rem]">{descricao}</p>
+                        
+                        <div className="flex justify-between">
+                            <p className="font-bebasNeue text-[1.7rem]">{nome}</p>
+                            <img onClick="" className="w-[1.4rem] h-[1.4rem] ml-[5rem] " src="/imagens/closeIcon.png" alt="" />
+                        </div>
+
+                        <p className="font-bebasNeue text-[0.95rem] w-[9rem]">{descricao}</p>
                     </div>
 
                     <div className="flex items-end justify-between h-[55%]">
