@@ -1,5 +1,5 @@
 /*
-Penei em deixar os input já com seus valores do banco de dados, assim seria mais fácil de visualizar. No entanto, só soube
+Pensei em deixar os input já com seus valores do banco de dados, assim seria mais fácil de visualizar. No entanto, só soube
 fazer de 'cabeça' a parte visual, preciso dar uma olhada na documentação do react/node sobre isso. As constantes referentes
 a conexão com banco de dados (handleChange e handlesubmit) foram indicações da IA de como poderia ser feito.
 */
@@ -26,9 +26,9 @@ export function PersonalDataForms({ nome, telefone, email, cep, cidade, bairro, 
 
     //Seria interessante o uso de macro nos inputs por conta da legibilidade?
     return (
-        <div className='w-[58%] font-bebasNeue ml-[4.5rem] mt-[3.4rem]'>
+        <div className='w-[54%] font-bebasNeue ml-[4.5rem] mt-[3.4rem]'>
             <h2 className='text-[38px] mb-[2rem]'>Informações Pessoais</h2>
-            <form onSubmit={handleSubmit} className='text-[20px]'>
+            <form method='#' onSubmit={handleSubmit} className='text-[20px]'>
                 <label>Identificação</label>
                 <div className='flex justify-between mt-[0.2rem]'>
                     <input type="text" name="nome" value={inputValue.nome} onChange={handleChange} className='w-[48%] border-b border-black'/> 
@@ -56,7 +56,7 @@ export function PersonalDataForms({ nome, telefone, email, cep, cidade, bairro, 
                 </div>
                 
                 <div className='mt-[3rem]'>
-                    <button type="submit" className='bg-[#00f511] w-[10rem] h-[3rem] rounded-lg text-[24px] text-white'>Salvar</button>
+                    <button type="submit" className='bg-[#00f511] w-[10rem] h-[3rem] rounded-lg text-[24px] text-white hover:bg-[#35a03c]'>Salvar</button>
                 </div>
                 
             </form>
