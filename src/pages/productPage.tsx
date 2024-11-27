@@ -3,7 +3,7 @@ import Unique from "@/components/unique";
 
 export default function productPage(){
     return(
-        <div>
+        <div className="bg-[#f7f7f7] w-screen h-screen">
             <Menu></Menu>
             <Unique></Unique>
         </div>
