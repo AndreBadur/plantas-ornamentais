@@ -26,7 +26,7 @@ export function PersonalDataForms({ nome, telefone, email, cep, cidade, bairro, 
 
     //Seria interessante o uso de macro nos inputs por conta da legibilidade?
     return (
-        <div className='w-[54%] font-bebasNeue ml-[4.5rem] mt-[3.4rem]'>
+        <div className='w-[50%] font-bebasNeue ml-[5rem] mt-[3.4rem]'>
             <h2 className='text-[38px] mb-[2rem]'>Informações Pessoais</h2>
             <form method='#' onSubmit={handleSubmit} className='text-[20px]'>
                 <label>Identificação</label>
