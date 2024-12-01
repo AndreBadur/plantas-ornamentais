@@ -29,7 +29,7 @@ export default function Unique() {
                             <div className="w-[24vw] h-[24vw] ml-[1vw] bg-blue-500 items-center"></div>
                         </div>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center font-openSans">
                         <div className="h-[24vw]">
                             <p className="text-black">[Nome da planta]</p>
                             <div className="w-[24vw] flex justify-between pt-[3vh]">
@@ -49,6 +49,7 @@ export default function Unique() {
                                         <input
                                             type="text"
                                             placeholder="CEP"
+                                            maxlength="9"
                                             className="bg-transparent outline-none text-gray-700 px-4 w-full"
                                         />
                                     </label>
@@ -71,9 +72,9 @@ export default function Unique() {
                             </div>
 
                             {/*Eu não tenho ideia de como fazzer conexão dos seguintes botões no momento: */}
-                            <div className="mt-[2vh] w-[30vw] flex justify-between">
-                                <button className="w-[10vw] h-[2rem] bg-[#00f511] rounded-lg"> Comprar </button>
-                                <button className="w-[14rem] h-[2rem] bg-[#feef64] rounded-lg"> Colocar no carrinho </button>
+                            <div className="mt-[2vh] w-[26vw] flex justify-between">
+                                <button className="w-[10vw] h-[5vh] bg-[#00f511] rounded-[14px]"><b> Comprar </b></button>
+                                <button className="w-[14rem] h-[5vh] bg-[#feef64] rounded-[14px]"><b> Colocar no carrinho </b></button>
                             </div>
                             
                         </div>
@@ -82,15 +83,17 @@ export default function Unique() {
             </div>
 
             <div className="flex justify-center">
-                <div className="w-[82vw] h-[60vh] mt-[6vh] bg-[#ffffff] flex rounded-lg">
-                    <div className="w-[90%] break-words pl-[4.2vw]">
-                        <p>Descrição geral</p>
-                        <p>[Descrição]</p>
-                        <p>Nome popular: kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</p>
-                        <p>Nome científico: </p>
-                        <p>Luminosidade necessária: </p>
-                        <p>Ambiente: </p>
-                        <p>Rega:</p>
+                <div className="w-[82vw] mt-[4vh] bg-[#ffffff] flex rounded-lg">
+                    <div className="w-[90%] break-words pl-[4.2vw] font-poppins ">
+                        <strong>
+                            <p className="text-[4.4vh] mt-[2vh]">Descrição geral</p>
+                            <p className="mt-[1vh]">[Descrição]</p>
+                            <p className="mt-[1vh]">Nome popular:</p>
+                            <p className="mt-[1vh]">Nome científico: </p>
+                            <p className="mt-[1vh]">Luminosidade necessária: </p>
+                            <p className="mt-[1vh]">Ambiente: </p>
+                            <p className="mt-[1vh]">Rega:</p>
+                        </strong>
                     </div>
                 </div>
             </div>

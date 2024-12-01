@@ -15,6 +15,8 @@ const config: Config = {
 
       fontFamily: {
         bebasNeue: ["Bebas Neue"],
+        poppins: ["Poppins"],
+        openSans: ["Open Sans"],
       },
     },
   },
