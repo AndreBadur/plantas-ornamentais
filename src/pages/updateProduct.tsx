@@ -1,61 +1,57 @@
 import Anuncio from "@/components/Anuncio";
+import SearchBar from "@/components/SearchBar";
+import { useParams, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
+import { resolve } from "path";
 import { useEffect, useState } from "react";
 
-interface Products {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    cost: number;
-    status: number;
-  }
 
-export default function updateProduct(){
-    const [products, setProducts] = useState<Products[]>([]);
-    const [error, setError] = useState<string>("");
-    const [title, setTitle] = useState<string>("");
-    const [price, setPrice] = useState<number>(0);
-    const [description, setDescription] = useState<string>("");
-    const [cost, setCost] = useState<number>(0);
-    
+interface findUniqueProduct {
+  id: number;
+  title: string;
+  description: string | null;
+  price: number;
+  cost: number;
+  mean_rating: number | null;
+  image_1: string | null;
+  image_2: string | null;
+  image_3: string | null;
+  image_4: string | null;
+  image_5: string | null;
+  inactive: number;
+}
 
-    useEffect(() => {
-        // Remover o scroll horizontal
-        document.body.style.overflowX = "hidden";
-    
-        // Buscar Produtos no BD
-        fetchProducts();
-      }, []);
-    
-      // Função de Busca que obtem o retorno da API
-      const fetchProducts = async () => {
+
+export default function updateProduct() {
+    const router = useRouter();
+    let selectedId: string
+    const [product,setProduct] = useState<findUniqueProduct>();
+
+      useEffect(()=>{
+        selectedId = String(router.query.id)
+        if(selectedId != "undefined"){
+         fetchProducts(selectedId)
+        }
+      },[router.query.id])
+
+      const fetchProducts = async (id:string) => {
         try {
-          const response = await fetch("/api/products");
-    
+          const response = await fetch("/api/products?id="+id);
           if (!response.ok) throw new Error("Failed to fetch: look at index.tsx");
           const data = await response.json();
-          setProducts(data);
+          setProduct(data)
         } catch (error) {
           console.error("Error fetching products:", error);
         }
       };
-   
+
+      
+      
     return(
-        <div>
-            {products.map((product) => (
-          <li key={product.id}>
-            <Anuncio
-              title={product.title}
-              description={product.description}
-              price={product.price}
-              image="/imagens/vaso.png"
-            >
-              {" "}
-            </Anuncio>
-          </li>
-        ))}
-            <input type="text" placeholder={title} />
-        </div>
+      <div>
+        <h1>{product?.title}</h1>
+        
+      </div>
     )
 }
 

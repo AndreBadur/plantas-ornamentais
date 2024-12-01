@@ -4,6 +4,23 @@ const prisma = new PrismaClient();
 
 export default async function Products(req, res) {
   if (req.method === "GET") {
+    if(req.query.id){
+      const id = req.query.id
+      try {
+        console.log("ID no product JS try: "+ Number(id))
+        const findUniqueProduct = await prisma.product.findUnique({
+          where: {
+            id: Number(id),
+          },
+        });
+        res.status(269).json(findUniqueProduct);
+      } catch (error) {
+        return res
+          .status(500)
+          .json(id)
+          .json({ message: "Failed to findUnique Product: look api/product.js" });
+      }
+    } else{ 
     try {
       const products = await prisma.product.findMany();
       res.status(200).json(products);
@@ -11,8 +28,9 @@ export default async function Products(req, res) {
       res
         .status(500)
         .json({ message: "Failed to fetch Products: look api/product.js" });
-    }
-  } else if (req.method === "POST") {
+      }
+    } 
+    } else if (req.method === "POST") {
     const { title, description, price, cost, mean_rating, image_1, image_2, image_3, image_4, image_5 } = req.body;
 
     if (!title || !price) {
@@ -31,6 +49,7 @@ export default async function Products(req, res) {
         .status(500)
         .json({ message: "Failed to create Product: look api/product.js" });
     }
+  
   } else if (req.method === "DELETE") {
     const id = req.query.receivedId;
 
@@ -77,5 +96,4 @@ export default async function Products(req, res) {
   }else {
     res.status(405).json({ message: "Method not allowed" });
   }
-  //, cost, mean_rating, image1, image2,image3,image4,image5
 }
