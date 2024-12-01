@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function Unique() {
+    {/* Parte para o contador de quantidade, utilizável? */}
     const [count, setCount] = useState<number>(1);
 
     const increment = () => {
@@ -11,23 +12,58 @@ export default function Unique() {
         setCount((prev) => (prev > 1 ? prev - 1 : 1));
     };
 
+    {/* Parte para o carrossel 
+        (Murilo do futuro, caso esteja se perguntando, eu também não tenho a menor 
+        ideia do porque está funcionando a lógica, pois não está batendo com o que você viu...)*/}
+
+    const images = [
+        "/imagens/loginbg.jpg", 
+        "/imagens/loginbg2.png",
+        "/imagens/tulipa.png",
+        "/imagens/vaso.png",
+        "/imagens/folhagens.png",
+    ];
+      
+    const [activeImage, setActiveImage] = useState(images[0]);
+
     return (
         <div>
             <div className="flex justify-center">
                 <div className="w-[82vw] h-[60vh] mt-[6rem] bg-[#ffffff] flex rounded-lg">
-                    <div className="w-[50%] flex pl-[4.2vw]">
-                        <div className="flex justify-center items-center">
-                            <div className="flex flex-col justify-between items-center h-[24vw]">
-                                <div className="w-[4.5vw] h-[4.5vw] bg-blue-500"></div>
-                                <div className="w-[4.5vw] h-[4.5vw] bg-blue-500"></div>
-                                <div className="w-[4.5vw] h-[4.5vw] bg-blue-500"></div>
-                                <div className="w-[4.5vw] h-[4.5vw] bg-blue-500"></div>
-                                <div className="w-[4.5vw] h-[4.5vw] bg-blue-500"></div>
-                            </div>
+                <div className="w-[50%] flex pl-[4.2vw]">
+                    
+                    <div className="flex justify-center items-center">
+                        <div className="flex flex-col justify-between items-center h-[24vw]">
+                        {images.map((img, index) => (
+                            <button
+                            key={index}
+                            onClick={() => setActiveImage(img)}
+                            className={`w-[4.5vw] h-[4.5vw] bg-blue-500 rounded-md ${
+                                img === activeImage ? "ring-2" : ""
+                            }`}
+
+                            >
+                            <img
+                                src={img}
+                                alt={`Imagem ${index}`}
+                                className="w-full h-full object-cover rounded-md"
+                            />
+                            </button>
+                        ))}
+
                         </div>
-                        <div className="flex items-center">
-                            <div className="w-[24vw] h-[24vw] ml-[1vw] bg-blue-500 items-center"></div>
+                    </div>
+
+                    {/* Imagem maior */}
+                    <div className="flex items-center">
+                        <div className="w-[24vw] h-[24vw] ml-[1vw] items-center">
+                        <img
+                            src={activeImage}
+                            alt="Imagem selecionada"
+                            className="w-full h-full object-cover rounded-md"
+                        />
                         </div>
+                    </div>
                     </div>
                     <div className="flex items-center font-openSans">
                         <div className="h-[24vw]">
@@ -71,7 +107,7 @@ export default function Unique() {
                                 </div>
                             </div>
 
-                            {/*Eu não tenho ideia de como fazzer conexão dos seguintes botões no momento: */}
+                            {/*Eu não tenho ideia de como fazer conexão dos seguintes botões no momento: */}
                             <div className="mt-[2vh] w-[26vw] flex justify-between">
                                 <button className="w-[10vw] h-[5vh] bg-[#00f511] rounded-[14px]"><b> Comprar </b></button>
                                 <button className="w-[14rem] h-[5vh] bg-[#feef64] rounded-[14px]"><b> Colocar no carrinho </b></button>
@@ -83,7 +119,7 @@ export default function Unique() {
             </div>
 
             <div className="flex justify-center">
-                <div className="w-[82vw] mt-[4vh] bg-[#ffffff] flex rounded-lg">
+                <div className="w-[82vw] mt-[4vh] bg-[#ffffff] flex rounded-lg mb-[4vh]">
                     <div className="w-[90%] break-words pl-[4.2vw] font-poppins ">
                         <strong>
                             <p className="text-[4.4vh] mt-[2vh]">Descrição geral</p>
@@ -92,7 +128,7 @@ export default function Unique() {
                             <p className="mt-[1vh]">Nome científico: </p>
                             <p className="mt-[1vh]">Luminosidade necessária: </p>
                             <p className="mt-[1vh]">Ambiente: </p>
-                            <p className="mt-[1vh]">Rega:</p>
+                            <p className="mt-[1vh] pb-[2vh]">Rega:</p>
                         </strong>
                     </div>
                 </div>
