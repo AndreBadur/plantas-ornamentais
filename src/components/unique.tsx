@@ -12,9 +12,7 @@ export default function Unique() {
         setCount((prev) => (prev > 1 ? prev - 1 : 1));
     };
 
-    {/* Parte para o carrossel 
-        (Murilo do futuro, caso esteja se perguntando, eu também não tenho a menor 
-        ideia do porque está funcionando a lógica, pois não está batendo com o que você viu...)*/}
+    {/* Parte para o carrossel*/}
 
     const images = [
         "/imagens/loginbg.jpg", 
