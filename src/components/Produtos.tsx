@@ -1,4 +1,6 @@
+import { redirect } from "next/dist/server/api-utils";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState } from "react";
 
 interface Products {
@@ -18,6 +20,7 @@ const Produtos: React.FC = () => {
   const formEvent = async (e: FormEvent) => {
     e.preventDefault;
   };
+  const router = useRouter()
 
   useEffect(() => {
     // Remover o scroll horizontal
@@ -128,13 +131,16 @@ const Produtos: React.FC = () => {
                                 >
                                     <img src="/imagens/lixeira.png" alt="Excluir" className="w-5 h-5" />
                                 </button>
-                                <a href="/updateProduct">
+                                
+
+                                {}
                                 <button
                                     className="flex items-center justify-center bg-blue-500 p-2 rounded-md"
+                                    onClick={() =>router.push("updateProduct?id="+produto.id)}
                                 >
                                     <img src="/imagens/lapis.png" alt="Editar" className="w-5 h-5" />
                                 </button>
-                                </a>
+                                
                             </td>
                         </tr>
                     ))}

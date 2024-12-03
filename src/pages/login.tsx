@@ -2,8 +2,32 @@ import Button from "@/components/BotaoConfirma";
 import { InputEmail, InputPassword } from "@/components/CamposLogin";
 import { Title, SubTitle, Option, Line } from "@/components/TextoAuth";
 import Image from "next/image";
+import { FormEvent } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Login() {
+  const router = useRouter()
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget)
+    const email = formData.get('email')
+    const password = formData.get('password')
+
+    const response = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    })
+
+    if (response.ok) {
+      router.push('/')
+    } else {
+      // Handle errors
+    }
+  }
+
   return (
     <div className={`flex justify-between w-[100%]`}>
       <section className={`flex justify-center items-center h-screen w-[100%]`}>
@@ -12,19 +36,23 @@ export default function Login() {
             <Title text="Bem-vindo de volta!"></Title>
             <SubTitle text="Insira seus dados para acessar sua conta!"></SubTitle>
           </div>
+          <form onSubmit={handleSubmit}>
+            <div className="h-[24vh] flex flex-col justify-around">
+              <InputEmail></InputEmail>
+              <InputPassword></InputPassword>
+            </div>
 
-          <div className="h-[24vh] flex flex-col justify-around">
-            <InputEmail></InputEmail>
-            <InputPassword></InputPassword>
-          </div>
+            <a href="passReset">
+              <Option text="esqueceu a senha?"></Option>
+            </a>
 
-          <a href="passReset">
-            <Option text="esqueceu a senha?"></Option>
-          </a>
-
-          <div className={`w-[100%] flex justify-center mt-[1.3rem]`}>
-            <Button text="Login"></Button>
-          </div>
+            <div className={`w-[100%] flex justify-center mt-[1.3rem]`}>
+              <button type="submit"
+                className={`bg-[#00F511] h-[3.1rem] w-[14.8rem] rounded-lg text-[1.5rem] text-[#ffffff] font-bebasNeue`}>
+                Login
+              </button>
+            </div>
+          </form>
 
           <Line></Line>
           <div className={`flex justify-center text-[0.938rem] mt-[0.4rem]`}>
