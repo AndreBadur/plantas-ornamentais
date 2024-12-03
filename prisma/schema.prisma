@@ -1,0 +1,110 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model address {
+  id           Int     @id @default(autoincrement())
+  id_client    Int
+  name         String  @db.VarChar(45)
+  cep          String? @db.VarChar(8)
+  country      String? @db.VarChar(45)
+  city         String? @db.VarChar(45)
+  neighborhood String? @db.VarChar(45)
+  street       String  @db.VarChar(45)
+  number       String  @db.VarChar(45)
+  complement   String? @db.VarChar(45)
+  phone        String  @db.VarChar(14)
+  client       client  @relation(fields: [id_client], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_address")
+
+  @@index([id_client], map: "fk_client_address")
+}
+
+model client {
+  id                 Int             @id @default(autoincrement())
+  name               String          @db.VarChar(128)
+  surname            String          @db.VarChar(128)
+  email              String          @db.VarChar(128)
+  password_encrypted String          @db.VarChar(255)
+  iv                 String          @db.VarChar(255)
+  date_created       DateTime        @default(now()) @db.DateTime(0)
+  date_deleted       DateTime?       @db.DateTime(0)
+  inactive           Int             @default(0) @db.TinyInt
+  token              String          @db.VarChar(255)
+  last_login         DateTime?       @default(now()) @db.DateTime(0)
+  cpf                String?         @db.VarChar(11)
+  cnpj               String?         @db.VarChar(14)
+  address            address[]
+  favorite           favorite[]
+  sac                sac[]
+  shopping_cart      shopping_cart[]
+}
+
+model favorite {
+  id           Int      @id @default(autoincrement())
+  id_client    Int
+  id_product   Int
+  date_created DateTime @default(now()) @db.DateTime(0)
+  amount       Int      @default(1)
+  client       client   @relation(fields: [id_client], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_favorite")
+  product      product  @relation(fields: [id_product], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_favorite")
+
+  @@index([id_client], map: "fk_client_favorite")
+  @@index([id_product], map: "fk_product_favorite")
+}
+
+model product {
+  id            Int             @id @default(autoincrement())
+  title         String          @db.VarChar(50)
+  description   String?         @db.VarChar(50)
+  price         Float           @db.Float
+  cost          Float           @db.Float
+  mean_rating   Float?          @default(0) @db.Float
+  image_1       String?         @db.VarChar(255)
+  image_2       String?         @db.VarChar(255)
+  image_3       String?         @db.VarChar(255)
+  image_4       String?         @db.VarChar(255)
+  image_5       String?         @db.VarChar(255)
+  date_created  DateTime?       @default(now()) @db.DateTime(0)
+  date_updated  DateTime?       @default(now()) @db.DateTime(0)
+  date_deleted  DateTime?       @db.DateTime(0)
+  inactive      Int             @default(0) @db.TinyInt
+  favorite      favorite[]
+  shopping_cart shopping_cart[]
+}
+
+model sac {
+  id          Int        @id @default(autoincrement())
+  id_client   Int
+  title       String?    @db.VarChar(45)
+  description String?    @db.VarChar(45)
+  category    String?    @db.VarChar(45)
+  status      sac_status @default(Open)
+  client      client     @relation(fields: [id_client], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_sac")
+
+  @@index([id_client], map: "fk_client_sac")
+}
+
+model shopping_cart {
+  id           Int      @id @default(autoincrement())
+  amount       Int      @default(1)
+  id_client    Int
+  id_product   Int
+  date_created DateTime @default(now()) @db.DateTime(0)
+  client       client   @relation(fields: [id_client], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_client_cart")
+  product      product  @relation(fields: [id_product], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_cart")
+
+  @@index([id_client], map: "fk_client_cart")
+  @@index([id_product], map: "fk_product_cart")
+}
+
+enum sac_status {
+  Open
+  Close
+  In_Progress @map("In Progress")
+}
