@@ -5,7 +5,7 @@ import Dashboard from "@/components/Dashboard";
 import Produtos from "@/components/Produtos";
 import Categorias from "@/components/Categorias";
 import Tags from "@/components/Tags";
-import EditarProduto from "@/components/EditarProduto";
+import EditarProduto from "@/components/UpdateProduct";
 import CriarProduto from "@/components/CriarProduto";
 
 const Admin: React.FC = () => {
@@ -23,8 +23,6 @@ const Admin: React.FC = () => {
                 return <Dashboard/>;
             case "produtos":
                 return <Produtos/>;
-            case "editar":
-                return <EditarProduto/>
             case "categorias":
                 return <Categorias/>;
             case "tags":
