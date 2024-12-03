@@ -19,7 +19,7 @@ const Carrossel: React.FC = () => {
   // Função para ir para o conjunto anterior de 3 imagens
   const prevSlide = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
     );
   };
 
