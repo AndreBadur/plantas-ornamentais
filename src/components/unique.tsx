@@ -58,7 +58,7 @@ export default function Unique() {
                         <img
                             src={activeImage}
                             alt="Imagem selecionada"
-                            className="w-full h-full object-cover rounded-md"
+                            className=" h-full w-full object-cover rounded-md"
                         />
                         </div>
                     </div>
