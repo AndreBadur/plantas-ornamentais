@@ -112,98 +112,96 @@ export default function updateProduct() {
           <h1 className="text-2xl font-bold text-gray-700 text-center mb-6">
             Atualizar Produto {product?.id}
           </h1>
-          <form className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex flex-col">
-                <label className="text-gray-600 font-medium">Título</label>
-                <input
-                  className="border border-gray-300 rounded-md p-3 "
-                  type="text"
-                  defaultValue={product?.title}
-                  onChange={(e) => setTitle(e.target.value)}
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="text-gray-600 font-medium">Preço</label>
-                <input
-                  className="border border-gray-300 rounded-md p-3 "
-                  type="number"
-                  defaultValue={product?.price}
-                  onChange={(e) => setPrice(Number(e.target.value))}
-                />
-              </div>
-              <div className="col-span-2 flex flex-col">
-                <label className="text-gray-600 font-medium">Descrição</label>
-                <textarea
-                  className="border border-gray-300 rounded-md p-3  resize-none h-24"
-                  defaultValue={product?.description}
-                  onChange={(e) => setDescription(e.target.value)}
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="text-gray-600 font-medium">Custo</label>
-                <input
-                  className="border border-gray-300 rounded-md p-3 "
-                  type="number"
-                  defaultValue={product?.cost}
-                  onChange={(e) => setCost(Number(e.target.value))}
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="text-gray-600 font-medium">Classificação Média</label>
-                <input
-                  className="border border-gray-300 rounded-md p-3 "
-                  type="number"
-                  defaultValue={product?.mean_rating}
-                  onChange={(e) => setMean_rating(Number(e.target.value))}
-                />
-              </div>
-              <div className="flex flex-col">
-                <label className="text-gray-600 font-medium">
-                  Status (Ativo = 0 | Inativo = 1)
-                </label>
-                <input
-                  className="border border-gray-300 rounded-md p-3"
-                  type="number"
-                  defaultValue={product?.inactive}
-                  onChange={(e) => setInactive(Number(e.target.value))}
-                />
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col">
+              <label className="text-gray-600 font-medium">Título</label>
+              <input
+                className="border border-gray-300 rounded-md p-3 "
+                type="text"
+                defaultValue={product?.title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
             </div>
-            <div className="flex flex-col mt-4">
-              <label className="text-gray-600 font-medium mb-2">Imagens do Produto</label>
-              <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                {[1, 2, 3, 4, 5].map((num) => (
-                  <input
-                    key={num}
-                    className="border border-gray-300 rounded-md p-2"
-                    type="file"
-                    onChange={(e) => {
-                      const setImage = eval(`setImage_${num}`);
-                      setImage(e.target.value);
-                    }}
-                  />
-                ))}
-              </div>
+            <div className="flex flex-col">
+              <label className="text-gray-600 font-medium">Preço</label>
+              <input
+                className="border border-gray-300 rounded-md p-3 "
+                type="number"
+                defaultValue={product?.price}
+                onChange={(e) => setPrice(Number(e.target.value))}
+              />
             </div>
-            <div className="mt-10 flex justify-end space-x-4">
-              <Link href="/admin">
-                <button
-                  type="button"
-                  className="bg-gray-200 text-gray-700 font-medium py-2 px-6 rounded-md hover:bg-gray-300"
-                >
-                  Cancelar
-                </button>
-              </Link>
+            <div className="col-span-2 flex flex-col">
+              <label className="text-gray-600 font-medium">Descrição</label>
+              <textarea
+                className="border border-gray-300 rounded-md p-3  resize-none h-24"
+                defaultValue={product?.description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-gray-600 font-medium">Custo</label>
+              <input
+                className="border border-gray-300 rounded-md p-3 "
+                type="number"
+                defaultValue={product?.cost}
+                onChange={(e) => setCost(Number(e.target.value))}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-gray-600 font-medium">Classificação Média</label>
+              <input
+                className="border border-gray-300 rounded-md p-3 "
+                type="number"
+                defaultValue={product?.mean_rating}
+                onChange={(e) => setMean_rating(Number(e.target.value))}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label className="text-gray-600 font-medium">
+                Status (Ativo = 0 | Inativo = 1)
+              </label>
+              <input
+                className="border border-gray-300 rounded-md p-3"
+                type="number"
+                defaultValue={product?.inactive}
+                onChange={(e) => setInactive(Number(e.target.value))}
+              />
+            </div>
+          </div>
+          <div className="flex flex-col mt-4">
+            <label className="text-gray-600 font-medium mb-2">Imagens do Produto</label>
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {[1, 2, 3, 4, 5].map((num) => (
+                <input
+                  key={num}
+                  className="border border-gray-300 rounded-md p-2"
+                  type="file"
+                  onChange={(e) => {
+                    const setImage = eval(`setImage_${num}`);
+                    setImage(e.target.value);
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+          <div className="mt-10 flex justify-end space-x-4">
+            <Link href="/admin">
               <button
                 type="button"
-                onClick={handleSubmit}
-                className="bg-green-600 text-white font-medium py-2 px-6 rounded-md hover:bg-green-700"
+                className="bg-gray-200 text-gray-700 font-medium py-2 px-6 rounded-md hover:bg-gray-300"
               >
-                Atualizar Produto
+                Cancelar
               </button>
-            </div>
-          </form>
+            </Link>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className="bg-green-600 text-white font-medium py-2 px-6 rounded-md hover:bg-green-700"
+            >
+              Atualizar Produto
+            </button>
+          </div>
         </div>
       </div>
     </div>
