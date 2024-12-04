@@ -42,9 +42,9 @@ const Home: React.FC = () => {
       <Menu />
       <div>
         <img
-          src="/imagens/homebg.jpg"
+          src="/imagens/homebg.png"
           alt="Home Background"
-          className="w-screen h-72 object-cover"
+          className="w-screen h-72 object-cover mt-14"
         />
       </div>
 
@@ -52,10 +52,11 @@ const Home: React.FC = () => {
       <div className="bg-green-100 mb-6">
         <Carrossel /> {/* Aqui está o carrossel */}
       </div>
+      <div className="mt-2 mb-6 border-t border-gray-300 w-2/3 mx-auto my-4 justify-center"></div>
       <div>
         <Categorias />
       </div>
-      <div className="mt-10 border-t border-gray-300 w-2/3 mx-auto my-4 justify-center"></div>
+      <div className="mt-6 border-t border-gray-300 w-2/3 mx-auto my-4 justify-center"></div>
       <div className="mt-6 flex text-black font-bold justify-center">
         <h1>PRODUTOS DESTAQUES</h1>
       </div>

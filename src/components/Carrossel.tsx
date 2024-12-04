@@ -1,11 +1,13 @@
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const Carrossel: React.FC = () => {
   const images = [
     "/imagens/vaso.png",
-    "/imagens/vaso.png",
-    "/imagens/vaso.png",
-    "/imagens/vaso.png",
+    "/imagens/vaso2.png",
+    "/imagens/vaso3.png",
+    "/imagens/vaso4.png",
+    "/imagens/vaso5.png",
   ];
 
   // Estado para o índice da imagem atual
@@ -32,7 +34,7 @@ const Carrossel: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-64 overflow-hidden">
+    <div className="relative w-full h-64 overflow-hidden mt-4">
       {/* Contêiner para as imagens com animação */}
       <div
         className="flex transition-transform duration-500 ease-in-out"
@@ -46,13 +48,13 @@ const Carrossel: React.FC = () => {
             key={index}
             className="w-full sm:w-1/3 flex-shrink-0 flex justify-center items-center" // Ajusta para 3 imagens visíveis
           >
-            <a href="">
+            <Link href="search">
               <img
                 src={image}
                 alt={`Slide ${index}`}
                 className="w-56 h-56 object-contain" // Ajusta a imagem para não esticar
               />
-            </a>
+            </Link>
           </div>
         ))}
       </div>

@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ContatoWA() {
   return (
-    <a href="">
+    <Link href="https://web.whatsapp.com/" target="_blank">
       <div
         className={`fixed bottom-0 bg-green-600 flex w-1/5 h-16 rounded-t-3xl`}
       >
@@ -18,6 +19,6 @@ export default function ContatoWA() {
           <h1>WhatsApp</h1>
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

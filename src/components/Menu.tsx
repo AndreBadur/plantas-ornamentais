@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Menu() {
   // Supondo que você tenha uma variável isLoggedIn que indica se o usuário está logado
   const isLoggedIn = false; // Aqui você pode substituir por uma verificação real de login
@@ -5,9 +7,9 @@ export default function Menu() {
   return (
     <div className="bg-green-600 fixed top-0 flex items-center w-full h-14 z-50">
       <div className="flex flex-1">
-        <a href="" className="w-12 h-12 ml-6">
+        <Link href="/" className="w-12 h-12 ml-6">
           <img src="/imagens/logo.png" alt="Logo" />
-        </a>
+        </Link>
       </div>
 
       {/* Menu de pesquisa */}
@@ -25,22 +27,22 @@ export default function Menu() {
         {isLoggedIn ? (
           // Versão para usuário logado
           <div className="flex space-x-4">
-            <a href="/profile" className="text-white">
+            <Link href="profile" className="text-white">
               PERFIL
-            </a>
-            <a href="/logout" className="text-white">
+            </Link>
+            <Link href="logout" className="text-white">
               SAIR
-            </a>
+            </Link>
           </div>
         ) : (
           // Versão para usuário deslogado
           <div className="flex space-x-4">
-            <a href="/login" className="text-white">
+            <Link href="login" className="text-white">
               ENTRAR
-            </a>
-            <a href="/signUp" className="text-white">
+            </Link>
+            <Link href="signUp" className="text-white">
               CADASTRAR
-            </a>
+            </Link>
           </div>
         )}
       </div>
