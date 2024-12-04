@@ -9,7 +9,7 @@ interface Products {
     price: number;
     description: string;
     cost: number;
-    status: number;
+    inactive: number;
   }
 
 const Produtos: React.FC = () => {
@@ -31,14 +31,6 @@ const Produtos: React.FC = () => {
   }, []);
 
     // Função para alternar o status do ativo (True / False)
-    const toggleAtivo = (id: number) => {
-        setProducts((prevProdutos) =>
-            prevProdutos.map((produto) =>
-                produto.id === id ? { ...produto, ativo: !produto.status } : produto
-            )
-        );
-    };
-
     const fetchProducts = async () => {
         try {
           const response = await fetch("/api/products");
@@ -114,14 +106,15 @@ const Produtos: React.FC = () => {
                             <td className="border px-4 py-2">{produto.description}</td>
                             <td className="border px-4 py-2">R${produto.price}</td>
                             <td className="border px-4 py-2">R${produto.cost}</td>
+                            <td className="border px-4 py-2">R${produto.inactive}</td>
                             <td className="border px-4 py-2">
                                 <button
                                     className={`px-4 py-2 rounded-md ${
-                                        produto.status ? "bg-green-500" : "bg-red-500"
+                                        (produto.inactive === 0) ? "bg-green-500" : "bg-red-500"
                                     } text-white`}
-                                    onClick={() => toggleAtivo(produto.id)}
+                              
                                 >
-                                    {produto.status ? "Ativo" : "Inativo"}
+                                    {produto.inactive == 0 ?  "Ativo" : "Inativo"}
                                 </button>
                             </td>
                             <td className="border px-4 py-2 flex space-x-2">
