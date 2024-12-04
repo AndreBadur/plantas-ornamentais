@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { useRouter } from "next/router";
+
 import { FormEvent, useState } from "react";
 interface Products {
     id: number;
@@ -16,6 +18,7 @@ interface Products {
   }
 const EditarProduto: React.FC = () => {
 
+  const router = useRouter();
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -46,7 +49,8 @@ const EditarProduto: React.FC = () => {
             setImage_4(null);
             setImage_5(null);
             setError("");
-            redirect("admin");
+            alert("produto criado")
+            router.push("admin");
           } else {
             throw new Error("Failed to add product");
           }
