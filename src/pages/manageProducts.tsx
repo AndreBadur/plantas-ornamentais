@@ -1,7 +1,8 @@
 import Button from '@/components/BotaoConfirma'
+import { fetchProducts } from '@/components/functions/fetch'
 import { SubTitle } from '@/components/TextoAuth'
 import Link from 'next/link'
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState, useSyncExternalStore } from 'react'
 import { SlPencil, SlTrash } from 'react-icons/sl'
 
 interface Products {
@@ -13,43 +14,29 @@ interface Products {
     status: number
 }
 
-export default function manageProducts() {
-    //CRIAÇÃO DAS VARIAVEIS RESPONSAVEIS POR MANIPULAR ESTADOS E GUARDAR INFORMAÇÕES
-    const [products, setProducts] = useState<Products[]>([])
+export default function manageProducts() {  
     const [error, setError] = useState<string>('')
     const [id, setId] = useState<number>(0)
     const formEvent = async (e: FormEvent) => {
         e.preventDefault
+    } 
+    const [products,setProducts] = useState<Products[]>([])
+
+    if (products.length == 0) {
+        fetchProducts()
+            .then((response) => {                
+                setProducts(response)
+            })
+            .catch((error) => {
+                setError(error)
+            })
     }
 
     useEffect(() => {
-        // Remover o scroll horizontal
-        document.body.style.overflowX = 'hidden'
+        
+    },[error])
 
-        // Buscar Produtos no BD
-        fetchProducts()
-    }, [])
-
-    // Função de Busca que obtem o retorno da API
-    const fetchProducts = async () => {
-        try {
-            const response = await fetch('/api/products')
-
-            if (!response.ok)
-                throw new Error('Failed to fetch: look at index.tsx')
-            const data = await response.json()
-            setProducts(data)
-        } catch (error) {
-            console.error('Error fetching products:', error)
-        }
-    }
-
-    async function deleteProduct(receivedId: number) {
-        /* INFORMATION: 
-    Something really important in this function,
-    it's the fact the Method: DELETE do not allow body: content as POST and GET 
-    */
-
+    async function deleteProduct(receivedId: number) {        
         formEvent
         try {
             const response = await fetch(
@@ -76,6 +63,7 @@ export default function manageProducts() {
     }
 
     async function updateProduct(receivedId: number) {}
+    async function createProduct() {}
 
     return (
         <div className="flex items-center ">
@@ -109,9 +97,6 @@ export default function manageProducts() {
                 </thead>
                 <tbody>
                     {products.map((product) => (
-                        /* INFORMAÇÃO:
-            each mapped product need have the key reference.
-            */
                         <tr
                             key={product.id}
                             className="text-left border border-b-[1px]"
