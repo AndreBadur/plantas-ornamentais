@@ -1,48 +1,48 @@
-import { redirect } from "next/dist/server/api-utils";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React, { FormEvent, useEffect, useState } from "react";
+import { redirect } from 'next/dist/server/api-utils'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import React, { FormEvent, useEffect, useState } from 'react'
 
 interface Products {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    cost: number;
-    inactive: number;
-  }
+    id: number
+    title: string
+    price: number
+    description: string
+    cost: number
+    inactive: number
+}
 
 const Produtos: React.FC = () => {
-  //CRIAÇÃO DAS VARIAVEIS RESPONSAVEIS POR MANIPULAR ESTADOS E GUARDAR INFORMAÇÕES
-  const [products, setProducts] = useState<Products[]>([]);
-  const [error, setError] = useState<string>("");
-  const [id, setId] = useState<number>(0);
-  const formEvent = async (e: FormEvent) => {
-    e.preventDefault;
-  };
-  const router = useRouter()
+    //CRIAÇÃO DAS VARIAVEIS RESPONSAVEIS POR MANIPULAR ESTADOS E GUARDAR INFORMAÇÕES
+    const [products, setProducts] = useState<Products[]>([])
+    const [error, setError] = useState<string>('')
+    const [id, setId] = useState<number>(0)
+    const formEvent = async (e: FormEvent) => {
+        e.preventDefault
+    }
+    const router = useRouter()
 
-  useEffect(() => {
-    // Remover o scroll horizontal
-    document.body.style.overflowX = "hidden";
+    useEffect(() => {
+        // Remover o scroll horizontal
+        document.body.style.overflowX = 'hidden'
 
-    // Buscar Produtos no BD
-    fetchProducts();
-  }, []);
+        // Buscar Produtos no BD
+        fetchProducts()
+    }, [])
 
     // Função para alternar o status do ativo (True / False)
     const fetchProducts = async () => {
         try {
-          const response = await fetch("/api/products");
-    
-          if (!response.ok) throw new Error("Failed to fetch: look at index.tsx");
-          const data = await response.json();
-          setProducts(data);
+            const response = await fetch('/api/products')
+
+            if (!response.ok)
+                throw new Error('Failed to fetch: look at index.tsx')
+            const data = await response.json()
+            setProducts(data)
         } catch (error) {
-          console.error("Error fetching products:", error);
+            console.error('Error fetching products:', error)
         }
-      };
-    
+    }
 
     // Função para excluir o produto
     async function deleteProduct(receivedId: number) {
@@ -50,41 +50,43 @@ const Produtos: React.FC = () => {
         Something really important in this function,
         it's the fact the Method: DELETE do not allow body: content as POST and GET 
         */
-    
-        formEvent;
-        try {
-          const response = await fetch("/api/products?receivedId=" + receivedId, {
-            method: "DELETE",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-          if (response.ok) {
-            const deletedProduct = await response.json();
-            console.log(deletedProduct);
-            fetchProducts();
-            setError("");
-          } else {
-            throw new Error("Failed to delete product");
-          }
-        } catch (error) {
-          console.error("Error deleting product - catch:", error);
-          setError("failed to delete product");
-        }
-      }
 
+        formEvent
+        try {
+            const response = await fetch(
+                '/api/products?receivedId=' + receivedId,
+                {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            )
+            if (response.ok) {
+                const deletedProduct = await response.json()
+                console.log(deletedProduct)
+                fetchProducts()
+                setError('')
+            } else {
+                throw new Error('Failed to delete product')
+            }
+        } catch (error) {
+            console.error('Error deleting product - catch:', error)
+            setError('failed to delete product')
+        }
+    }
 
     return (
         <div className="p-6 min-h-screen">
-            <h1 className="ml-6 mt-4 mb-10 text-black font-bold text-3xl">Produtos</h1>
+            <h1 className="ml-6 mt-4 mb-10 text-black font-bold text-3xl">
+                Produtos
+            </h1>
 
-           <a href="createProduct">
-           <button
-                className="bg-green-500 text-white px-4 py-2 rounded-md mb-4"
-            >
-                Adicionar Produto
-            </button>
-           </a>
+            <a href="createProduct">
+                <button className="bg-green-500 text-white px-4 py-2 rounded-md mb-4">
+                    Adicionar Produto
+                </button>
+            </a>
 
             <table className="text-black min-w-full table-auto">
                 <thead>
@@ -102,19 +104,32 @@ const Produtos: React.FC = () => {
                     {products.map((produto) => (
                         <tr key={produto.id}>
                             <td className="border px-4 py-2">{produto.id}</td>
-                            <td className="border px-4 py-2">{produto.title}</td>
-                            <td className="border px-4 py-2">{produto.description}</td>
-                            <td className="border px-4 py-2">R${produto.price}</td>
-                            <td className="border px-4 py-2">R${produto.cost}</td>
-                            <td className="border px-4 py-2">R${produto.inactive}</td>
+                            <td className="border px-4 py-2">
+                                {produto.title}
+                            </td>
+                            <td className="border px-4 py-2">
+                                {produto.description}
+                            </td>
+                            <td className="border px-4 py-2">
+                                R${produto.price}
+                            </td>
+                            <td className="border px-4 py-2">
+                                R${produto.cost}
+                            </td>
+                            <td className="border px-4 py-2">
+                                R${produto.inactive}
+                            </td>
                             <td className="border px-4 py-2">
                                 <button
                                     className={`px-4 py-2 rounded-md ${
-                                        (produto.inactive === 0) ? "bg-green-500" : "bg-red-500"
+                                        produto.inactive === 0
+                                            ? 'bg-green-500'
+                                            : 'bg-red-500'
                                     } text-white`}
-                              
                                 >
-                                    {produto.inactive == 0 ?  "Ativo" : "Inativo"}
+                                    {produto.inactive == 0
+                                        ? 'Ativo'
+                                        : 'Inativo'}
                                 </button>
                             </td>
                             <td className="border px-4 py-2 flex space-x-2">
@@ -122,25 +137,35 @@ const Produtos: React.FC = () => {
                                     className="flex items-center justify-center bg-red-500 p-2 rounded-md"
                                     onClick={() => deleteProduct(produto.id)}
                                 >
-                                    <img src="/imagens/lixeira.png" alt="Excluir" className="w-5 h-5" />
+                                    <img
+                                        src="/imagens/lixeira.png"
+                                        alt="Excluir"
+                                        className="w-5 h-5"
+                                    />
                                 </button>
-                                
 
                                 {}
                                 <button
                                     className="flex items-center justify-center bg-blue-500 p-2 rounded-md"
-                                    onClick={() =>router.push("updateProduct?id="+produto.id)}
+                                    onClick={() =>
+                                        router.push(
+                                            'updateProduct?id=' + produto.id
+                                        )
+                                    }
                                 >
-                                    <img src="/imagens/lapis.png" alt="Editar" className="w-5 h-5" />
+                                    <img
+                                        src="/imagens/lapis.png"
+                                        alt="Editar"
+                                        className="w-5 h-5"
+                                    />
                                 </button>
-                                
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-    );
-};
+    )
+}
 
-export default Produtos;
+export default Produtos
