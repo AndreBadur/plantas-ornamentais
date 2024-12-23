@@ -2,7 +2,6 @@ const Categorias: React.FC = () => {
     return (
         <div className="flex-col min-h-screen">
             {' '}
-            {/* items-center justify-center */}
             <h1 className="ml-6 mt-4 text-black font-bold text-3xl">
                 Categorias
             </h1>
@@ -23,7 +22,6 @@ const Categorias: React.FC = () => {
             <h1 className="ml-6 mt-10 text-black font-bold text-3xl">
                 Existentes
             </h1>
-            {/* COLOCAR CATEGORIAS AQUI */}
         </div>
     )
 }

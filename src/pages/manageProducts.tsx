@@ -4,6 +4,8 @@ import { SubTitle } from '@/components/TextoAuth'
 import Link from 'next/link'
 import { FormEvent, useEffect, useState, useSyncExternalStore } from 'react'
 import { SlPencil, SlTrash } from 'react-icons/sl'
+import ErrorComponent from './errorpage'
+import ErrorDialog from './errorpage'
 
 interface Products {
     id: number
@@ -15,26 +17,22 @@ interface Products {
 }
 
 export default function manageProducts() {  
-    const [error, setError] = useState<string>('')
-    const [id, setId] = useState<number>(0)
-    const formEvent = async (e: FormEvent) => {
-        e.preventDefault
-    } 
+    const formEvent = async (e: FormEvent) => {e.preventDefault}
     const [products,setProducts] = useState<Products[]>([])
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const handleCloseDialog = () => setIsDialogOpen(false);
+    const [errorMessage, setErrorMessage] = useState("Something went wrong! You can't fetch products");
 
     if (products.length == 0) {
         fetchProducts()
             .then((response) => {                
                 setProducts(response)
+                
             })
-            .catch((error) => {
-                setError(error)
+            .catch(() => {
+                setIsDialogOpen(true);
             })
     }
-
-    useEffect(() => {
-        
-    },[error])
 
     async function deleteProduct(receivedId: number) {        
         formEvent
@@ -52,21 +50,21 @@ export default function manageProducts() {
                 const deletedProduct = await response.json()
                 console.log(deletedProduct)
                 fetchProducts()
-                setError('')
+                
             } else {
                 throw new Error('Failed to delete product')
             }
         } catch (error) {
             console.error('Error deleting product - catch:', error)
-            setError('failed to delete product')
+            
         }
     }
 
     async function updateProduct(receivedId: number) {}
     async function createProduct() {}
 
-    return (
-        <div className="flex items-center ">
+    return (        
+        <div className="flex items-center ">      
             <table className="table-auto border-separate border border-slate-400 w-full">
                 <thead>
                     <tr className="border border-b-[1px] bg-black text-white w-auto ">
@@ -139,10 +137,11 @@ export default function manageProducts() {
                     ))}
                 </tbody>
             </table>
+            <div>
+            {isDialogOpen && (
+                <ErrorDialog errorMessage={errorMessage} onClose={handleCloseDialog} />
+            )}
+            </div>
         </div>
     )
-}
-
-export function Campo(props: String) {
-    return <div className="text-black "></div>
 }
