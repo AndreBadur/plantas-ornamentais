@@ -1,22 +1,20 @@
-import { useState } from 'react'
+import Image from "next/image"
 
 interface Products {
     children?: React.ReactNode
-    title: any
-    price: any
-    description: any
-    image: any
+    title: string
+    price: string
+    description: string
+    image: string
 }
 
 export default function Anuncio(props: Products) {
     return (
         <div className="mt-0 ml-10 w-44 h-80 border-2 border-gray-300 rounded-lg p-4 overflow-hidden">
             <a href="" className="flex flex-col items-center h-full">
-                <img
-                    src={props.image}
-                    alt="Anúncio"
-                    className="w-full h-auto object-contain"
-                />
+                <Image
+                    src={props.image} alt="Anúncio" width={200} height={200} layout="responsive" className="w-full h-auto object-contain"
+                />    
                 <div className="border-t border-gray-300 w-2/3 mx-auto my-4 justify-center"></div>
                 <h1 className="text-black text-sm text-center">
                     {props.title}

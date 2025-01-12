@@ -1,31 +1,27 @@
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
 import { useRouter } from 'next/router'
 
 import { FormEvent, useState } from 'react'
-interface Products {
-    id: number
-    title: string
-    description: string
-    price: number
-    cost: number
-    mean_rating: number
-    image_1: any
-    image_2: any
-    image_3: any
-    image_4: any
-    image_5: any
-}
-const EditarProduto: React.FC = () => {
-    const router = useRouter()
 
+export default function EditarProduto() {    
+    const [title, setTitle] = useState<string>('')
+    const [description, setDescription] = useState<string>('')
+    const [price, setPrice] = useState<number>(0)
+    const [cost, setCost] = useState<number>(0)
+    const [mean_rating, setMean_rating] = useState<number>(0)
+    const [image_1, setImage_1] = useState<string>('')
+    const [image_2, setImage_2] = useState<string>('')
+    const [image_3, setImage_3] = useState<string>('')
+    const [image_4, setImage_4] = useState<string>('')
+    const [image_5, setImage_5] = useState<string>('')
+    const router = useRouter()
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
 
-        if (!title || !price) {
-            setError('Erro de entrada no formulário')
-            return
+        if (!title || !price) {            
+            return console.error('Erro de entrada no formulário')
         }
+
         try {
             const response = await fetch('/api/products', {
                 method: 'POST',
@@ -46,19 +42,17 @@ const EditarProduto: React.FC = () => {
                 }),
             })
             if (response.ok) {
-                const newProduct = await response.json()
-                setProducts((prevProducts) => [...prevProducts, newProduct])
+                await response.json()                
                 setTitle('')
                 setDescription('')
                 setPrice(0)
                 setCost(0)
                 setMean_rating(0)
-                setImage_1(null)
-                setImage_2(null)
-                setImage_3(null)
-                setImage_4(null)
-                setImage_5(null)
-                setError('')
+                setImage_1('')
+                setImage_2('')
+                setImage_3('')
+                setImage_4('')
+                setImage_5('')
                 alert('produto criado')
                 router.push('admin')
             } else {
@@ -66,24 +60,8 @@ const EditarProduto: React.FC = () => {
             }
         } catch (error) {
             console.error('Error adding product - catch:', error)
-            setError('failed to add product')
         }
     }
-
-    const [products, setProducts] = useState<Products[]>([])
-    const [error, setError] = useState<string>('')
-
-    const [title, setTitle] = useState<string>('')
-    const [description, setDescription] = useState<string>('')
-    const [price, setPrice] = useState<number>(0)
-    const [cost, setCost] = useState<number>(0)
-    const [mean_rating, setMean_rating] = useState<number>(0)
-    const [image_1, setImage_1] = useState<any>(null)
-    const [image_2, setImage_2] = useState<any>(null)
-    const [image_3, setImage_3] = useState<any>(null)
-    const [image_4, setImage_4] = useState<any>(null)
-    const [image_5, setImage_5] = useState<any>(null)
-
     return (
         <div className="ml-10 mt-14 bg-white flex-col min-h-screen">
             <div className="flex">
@@ -204,5 +182,3 @@ const EditarProduto: React.FC = () => {
         </div>
     )
 }
-
-export default EditarProduto

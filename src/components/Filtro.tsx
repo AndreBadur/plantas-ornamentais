@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Filtro() {
     return (
         <div className="mt-20 ml-5 w-44 h-80 border-2 border-gray-300 rounded-lg p-4 overflow-hidden">
@@ -29,8 +31,8 @@ export default function Filtro() {
                     placeholder="Bioma"
                 />
             </div>
-            <a className="flex w-6 h-6 mt-12 ml-14" href="">
-                <img src="/imagens/filtro.png" alt="Buscar" />
+            <a className="flex w-6 h-6 mt-12 ml-14" href="">            
+                <Image src="/imagens/filtro.png" alt="Buscar" width={24} height={24} />
             </a>
         </div>
     )

@@ -1,0 +1,10 @@
+[] - implement unic product page
+[] - implement login and session management
+[] - fix home page
+[] - implement error treatment using useState[error,setError]
+[] - create more components to reduce code
+        [] - forms input validation (CriarProduto.tsx, src/pages/indexbanco.tsx and others)
+        [] - clean forms function (CriarProduto.tsx and others)
+        [] - more as possible
+        [] - create components smaller as possible
+[] - search for a better way to declare constants in beggining of code (something like schemas)

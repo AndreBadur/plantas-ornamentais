@@ -1,10 +1,8 @@
-import Button from '@/components/BotaoConfirma'
 import { fetchProducts } from '@/components/functions/fetch'
 import { SubTitle } from '@/components/TextoAuth'
 import Link from 'next/link'
-import { FormEvent, useEffect, useState, useSyncExternalStore } from 'react'
+import { FormEvent, useState } from 'react'
 import { SlPencil, SlTrash } from 'react-icons/sl'
-import ErrorComponent from './errorpage'
 import ErrorDialog from './errorpage'
 
 interface Products {
@@ -21,7 +19,7 @@ export default function manageProducts() {
     const [products,setProducts] = useState<Products[]>([])
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const handleCloseDialog = () => setIsDialogOpen(false);
-    const [errorMessage, setErrorMessage] = useState("Something went wrong! You can't fetch products");
+    const [errorMessage] = useState("Something went wrong! You can't fetch products");
 
     if (products.length == 0) {
         fetchProducts()
@@ -60,7 +58,6 @@ export default function manageProducts() {
         }
     }
 
-    async function updateProduct(receivedId: number) {}
     async function createProduct() {}
 
     return (        

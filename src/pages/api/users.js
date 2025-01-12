@@ -9,7 +9,7 @@ export default async function handler(req, res) {
             const users = await prisma.user.findMany()
             res.status(200).json(users)
         } catch (error) {
-            res.status(500).json({ message: 'Failed to fetch users' })
+            error.status(500).json({ message: 'Failed to fetch users' })
         }
     } else if (req.method === 'POST') {
         const { name, email } = req.body
@@ -27,7 +27,7 @@ export default async function handler(req, res) {
             })
             res.status(201).json(newUser)
         } catch (error) {
-            res.status(500).json({ message: 'Failed to create user' })
+            error.status(500).json({ message: 'Failed to create user' })
         }
     } else {
         res.status(405).json({ message: 'Method not allowed' })

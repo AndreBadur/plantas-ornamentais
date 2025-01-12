@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
@@ -43,11 +44,9 @@ const Carrossel: React.FC = () => {
                         className="w-full sm:w-1/3 flex-shrink-0 flex justify-center items-center" // Ajusta para 3 imagens visíveis
                     >
                         <Link href="search">
-                            <img
-                                src={image}
-                                alt={`Slide ${index}`}
-                                className="w-56 h-56 object-contain" // Ajusta a imagem para não esticar
-                            />
+                            <Image 
+                                src={image} alt={`Slide ${index}`} className="w-56 h-56 object-contain"
+                            />                            
                         </Link>
                     </div>
                 ))}

@@ -1,6 +1,5 @@
 import Categorias from '@/components/macrocomponent/Categorias'
 import { FormEvent, useEffect, useState } from 'react'
-
 interface Products {
     id: number
     title: string
@@ -114,8 +113,6 @@ export default function home() {
                     </div>
                 </form>
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-
-                {/* Display the list of users */}
                 <h2>Product List</h2>
                 <ul>
                     {products.map((product) => (
