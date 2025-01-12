@@ -15,7 +15,7 @@ export default async function Products(req, res) {
                 })
                 res.status(200).json(findUniqueProduct)
             } catch (error) {
-                return res
+                return error
                     .status(500)
                     .json(id)
                     .json({
@@ -29,7 +29,7 @@ export default async function Products(req, res) {
                 res.status(200).json(products)
             } catch (error) {
                 res.status(500).json({
-                    message: 'Failed to fetch Products: look api/product.js',
+                    message: error,
                 })
             }
         }
@@ -73,7 +73,7 @@ export default async function Products(req, res) {
             res.status(201).json(newProduct)
         } catch (error) {
             res.status(500).json({
-                message: 'Failed to create Product: look api/product.js',
+                message: error,
             })
         }
     } else if (req.method === 'DELETE') {
@@ -95,7 +95,7 @@ export default async function Products(req, res) {
             res.status(500)
                 .json(id)
                 .json({
-                    message: 'Failed to delete Product: look api/product.js',
+                    message: error,
                 })
         }
     } else if (req.method === 'PUT') {
@@ -143,7 +143,7 @@ export default async function Products(req, res) {
             res.status(500)
                 .json(id)
                 .json({
-                    message: 'Failed to update Product: look api/product.js',
+                    message: error,
                 })
         }
     } else {

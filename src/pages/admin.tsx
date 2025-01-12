@@ -6,18 +6,15 @@ import Produtos from '@/components/Produtos'
 import Categorias from '@/components/Categorias'
 import Tags from '@/components/Tags'
 import EditarProduto from '@/components/EditarProduto'
-import CriarProduto from '@/components/CriarProduto'
 
-const Admin: React.FC = () => {
+export default function Admin() {
     const [selectedComponent, setSelectedComponent] =
         useState<string>('dashboard')
 
     useEffect(() => {
-        // Remover o scroll horizontal
         document.body.style.overflowX = 'hidden'
     }, [])
 
-    // Função para renderizar o componente selecionado
     const renderComponent = () => {
         switch (selectedComponent) {
             case 'dashboard':
@@ -34,20 +31,11 @@ const Admin: React.FC = () => {
                 return <div>Componente não encontrado.</div>
         }
     }
-
     return (
         <>
             <Menu />
             <MenuAdmin onSelect={(value) => setSelectedComponent(value)} />
             <div className="ml-60 mt-14 bg-white">{renderComponent()}</div>
         </>
-
-        /* <>
-            <Menu/>
-            <MenuAdmin onSelect={(value) => setSelectedComponent(value)}/>
-            <CriarProduto/>
-        </> */
     )
 }
-
-export default Admin

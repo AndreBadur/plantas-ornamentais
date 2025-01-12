@@ -1,8 +1,9 @@
-import Button from '@/components/BotaoConfirma'
+import { fetchProducts } from '@/components/functions/fetch'
 import { SubTitle } from '@/components/TextoAuth'
 import Link from 'next/link'
-import { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { SlPencil, SlTrash } from 'react-icons/sl'
+import ErrorDialog from './errorpage'
 
 interface Products {
     id: number
@@ -13,43 +14,25 @@ interface Products {
     status: number
 }
 
-export default function manageProducts() {
-    //CRIAÇÃO DAS VARIAVEIS RESPONSAVEIS POR MANIPULAR ESTADOS E GUARDAR INFORMAÇÕES
-    const [products, setProducts] = useState<Products[]>([])
-    const [error, setError] = useState<string>('')
-    const [id, setId] = useState<number>(0)
-    const formEvent = async (e: FormEvent) => {
-        e.preventDefault
-    }
+export default function manageProducts() {  
+    const formEvent = async (e: FormEvent) => {e.preventDefault}
+    const [products,setProducts] = useState<Products[]>([])
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const handleCloseDialog = () => setIsDialogOpen(false);
+    const [errorMessage] = useState("Something went wrong! You can't fetch products");
 
-    useEffect(() => {
-        // Remover o scroll horizontal
-        document.body.style.overflowX = 'hidden'
-
-        // Buscar Produtos no BD
+    if (products.length == 0) {
         fetchProducts()
-    }, [])
-
-    // Função de Busca que obtem o retorno da API
-    const fetchProducts = async () => {
-        try {
-            const response = await fetch('/api/products')
-
-            if (!response.ok)
-                throw new Error('Failed to fetch: look at index.tsx')
-            const data = await response.json()
-            setProducts(data)
-        } catch (error) {
-            console.error('Error fetching products:', error)
-        }
+            .then((response) => {                
+                setProducts(response)
+                
+            })
+            .catch(() => {
+                setIsDialogOpen(true);
+            })
     }
 
-    async function deleteProduct(receivedId: number) {
-        /* INFORMATION: 
-    Something really important in this function,
-    it's the fact the Method: DELETE do not allow body: content as POST and GET 
-    */
-
+    async function deleteProduct(receivedId: number) {        
         formEvent
         try {
             const response = await fetch(
@@ -65,20 +48,20 @@ export default function manageProducts() {
                 const deletedProduct = await response.json()
                 console.log(deletedProduct)
                 fetchProducts()
-                setError('')
+                
             } else {
                 throw new Error('Failed to delete product')
             }
         } catch (error) {
             console.error('Error deleting product - catch:', error)
-            setError('failed to delete product')
+            
         }
     }
 
-    async function updateProduct(receivedId: number) {}
+    async function createProduct() {}
 
-    return (
-        <div className="flex items-center ">
+    return (        
+        <div className="flex items-center ">      
             <table className="table-auto border-separate border border-slate-400 w-full">
                 <thead>
                     <tr className="border border-b-[1px] bg-black text-white w-auto ">
@@ -109,9 +92,6 @@ export default function manageProducts() {
                 </thead>
                 <tbody>
                     {products.map((product) => (
-                        /* INFORMAÇÃO:
-            each mapped product need have the key reference.
-            */
                         <tr
                             key={product.id}
                             className="text-left border border-b-[1px]"
@@ -154,10 +134,11 @@ export default function manageProducts() {
                     ))}
                 </tbody>
             </table>
+            <div>
+            {isDialogOpen && (
+                <ErrorDialog errorMessage={errorMessage} onClose={handleCloseDialog} />
+            )}
+            </div>
         </div>
     )
-}
-
-export function Campo(props: String) {
-    return <div className="text-black "></div>
 }
